@@ -12,22 +12,21 @@
     <div id="introduce">
         <div class="video-container">
             <video autoplay muted>
-                <source src="video/intro.mp4" type="video/mp4">
+                <source src="https://zerokhdt.sirv.com/intro.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div> 
     <div id="introduce-product" >
-        <div id="text">
-            <label id="textPopup" class="text-popup"></label>
-        </div>
         <div class="video-carousel">
             <div class="video-container-intro">
                 <div class="video-side left">
                     <video id="video-prev" src="video/ren1.mp4" type="video/mp4" muted></video>
                 </div>
                 <div class="video-main" onmouseover="openTextPopup()" onmouseout="closeTextPopup()">
-                                      
+                    <div id="text">
+                        <label id="textPopup" class="text-popup">Popup</label>
+                    </div>             
                     <video id="video-main" src="video/ren2.mp4" type="video/mp4" autoplay muted></video>
                 </div>
                 <div class="video-side right">
@@ -46,46 +45,48 @@
     </div>
     <div id="ground3d">
         <h1 id="color3d"></h1>
-        <div id="carousel">
-            <img id="img1" src="" alt="Image 1" class="active">
-            <img id="img2" src="" alt="Image 2">
+        <div id="Sirvs">
+            <div class="Sirv" id="spin1" data-src="https://zerokhdt.sirv.com/Spins/ADV%20BACKPACK_ABSOLUTE%20BLACK.spin"></div>
+            <div class="Sirv" id="spin2" data-src="https://zerokhdt.sirv.com/Spins/ADV%20BACKPACK_ATLANTIC%20BLUE/ADV%20BACKPACK_ATLANTIC%20BLUE.spin"></div>
+            <div class="Sirv" id="spin4" data-src="https://zerokhdt.sirv.com/Spins/ADV%20BACKPACK_MOSSY%20FOREST/ADV%20BACKPACK_MOSSY%20FOREST.spin"></div>
+            <div class="Sirv" id="spin3" data-src="https://zerokhdt.sirv.com/Spins/ADV%20BACKPACK_SAHARA%20SAND/ADV%20BACKPACK_SAHARA%20SAND.spin"></div>
         </div>
         <div class="circle-select">
-            <div class="circle" style="background-color: rgb(19, 18, 18);" data-value="ABSOLUTE_BLACK"></div>
-            <div class="circle" style="background-color: rgb(35, 14, 155);" data-value="ATLANTIC_BLUE"></div>
-            <div class="circle" style="background-color: rgb(255, 136, 0);" data-value="SAHARA_SAND"></div>
-            <div class="circle" style="background-color: #228B22;" data-value="MOSSY_FOREST"></div>
+            <div class="circle" style="background-color: rgb(19, 18, 18);" data-value="ABSOLUTE BLACK"></div>
+            <div class="circle" style="background-color: rgb(35, 14, 155);" data-value="ATLANTIC BLUE"></div>
+            <div class="circle" style="background-color: rgb(255, 136, 0);" data-value="SAHARA SAND"></div>
+            <div class="circle" style="background-color: #228B22;" data-value="MOSSY FOREST"></div>
         </div>
     </div>
     <div class="carousel-container">
-        <div class="carousel">
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_ABSOLUTE_BLACK_MAIN_VIEW.png" alt="Image 1">
+        <div class="carousel" id="carousel">
+            <div class="carousel-slide" id="slide1">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_ABSOLUTE_BLACK_MAIN_VIEW.png" alt="Image 1">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_ABSOLUTE_BLACK_BACK_VIEW.png" alt="Image 2">
+            <div class="carousel-slide" id="slide2">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_ABSOLUTE_BLACK_BACK_VIEW.png" alt="Image 2">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_ATLANTIC_BLUE_MAIN_VIEW.png" alt="Image 3">
+            <div class="carousel-slide" id="slide3">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_ATLANTIC_BLUE_MAIN_VIEW.png" alt="Image 3">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_ATLANTIC_BLUE_BACK_VIEW.png" alt="Image 4">
+            <div class="carousel-slide" id="slide4">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_ATLANTIC_BLUE_BACK_VIEW.png" alt="Image 4">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_MOSSY_FOREST_MAIN_VIEW.png" alt="Image 4">
+            <div class="carousel-slide" id="slide5">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_MOSSY_FOREST_MAIN_VIEW.png" alt="Image 4">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_MOSSY_FOREST_BACK_VIEW.png" alt="Image 4">
+            <div class="carousel-slide" id="slide6">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_MOSSY_FOREST_BACK_VIEW.png" alt="Image 4">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_SAHARA_SAND_MAIN_VIEW.png" alt="Image 4">
+            <div class="carousel-slide" id="slide7">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_SAHARA_SAND_MAIN_VIEW.png" alt="Image 4">
             </div>
-            <div class="carousel-slide">
-                <img src="MAIN_VIEW\ADV_BACKPACK_SAHARA_SAND_BACK_VIEW.png" alt="Image 4">
+            <div class="carousel-slide" id="slide8">
+                <img src="https://zerokhdt.sirv.com/ADV_BACKPACK_SAHARA_SAND_BACK_VIEW.png" alt="Image 4">
             </div>
         </div>
-        <button class="prev-btn">❮</button>
-        <button class="next-btn">❯</button>
+        <!-- <button class="prev-btn">❮</button>
+        <button class="next-btn">❯</button> -->
     </div>
     <div id="scroll-container">
         <div id="carousel-scroll">
@@ -93,6 +94,5 @@
             <img id="img4" src="" alt="Image 4">
         </div>
     </div>
-    <div class="Sirv" data-src="https://urrippur.sirv.com/Spins/ADV/ADV.spin"></div>
 </body>
 </html>

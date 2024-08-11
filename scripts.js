@@ -1,60 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     const circles = document.querySelectorAll('.circle');
-    const img1 = document.getElementById('img1');
-    const img2 = document.getElementById('img2');
     const color3d = document.getElementById('color3d');
-    const imageContainer = document.getElementById('carousel');
     const totalImages = 119; // Tổng số ảnh cho mỗi màu
-    let currentImageIndex = 1;
-    let direction = 1;
-    let color_default = 'ABSOLUTE_BLACK';
+    let color_default = 'ABSOLUTE BLACK';
 
-    function updateImages(color, index) {
+    function updateImages(color) {
         color3d.innerHTML = color;
-        img1.src = `COLORWAY_RENDER/ADV_BACKPACK_${color}_${index}.png`;
-        img2.src = `COLORWAY_RENDER/ADV_BACKPACK_${color}_${((index % totalImages) + 1)}.png`; // Ảnh tiếp theo
     }
-
-    function handleMouseMove(e) {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left; // Vị trí x chuột trong thẻ chứa ảnh
-        const imageIndex = Math.floor((x / rect.width) * totalImages) + 1;
-        currentImageIndex = ((imageIndex - 1) % totalImages) + 1; // Quay vòng ảnh
-
-        if (direction === 1) {
-            if (currentImageIndex === totalImages) {
-                direction = -1; // Chuyển hướng khi đến ảnh cuối cùng
-            }
-        } else if (direction === -1) {
-            if (currentImageIndex === 1) {
-                direction = 1; // Chuyển hướng khi đến ảnh đầu tiên
-            }
-        }
-        updateImages(color_default, currentImageIndex);
-        img1.classList.add('active');
-        img2.classList.remove('active');
-    }
-
-    function handleMouseEnter() {
-        img1.classList.add('active');
-        img2.classList.add('active');
-    }
-
-    // Thêm và gỡ bỏ sự kiện di chuột khi con trỏ chuột di chuyển vào và ra khỏi thẻ chứa ảnh
-    imageContainer.addEventListener('mousemove', handleMouseMove);
-    imageContainer.addEventListener('mouseenter', handleMouseEnter);
 
     // Thay đổi ảnh khi chọn màu từ dropdown
     circles.forEach((circle, index) => {
         circle.addEventListener('click', function() {             
             const color = this.getAttribute('data-value');
             color_default = color;
-            updateImages(color, currentImageIndex); // Gọi hàm updateImages với màu và chỉ số là 1
+            showSpin(`spin${index + 1}`)
+            updateImages(color); // Gọi hàm updateImages với màu và chỉ số là 1
         });
     });
 
+    function showSpin(selectedSpinId) {
+        const spins = document.querySelectorAll('.Sirv');
+        spins.forEach(spin => {
+            if (spin.id === selectedSpinId) {
+                spin.style.display = 'block';
+            } else {
+                spin.style.display = 'none';
+            }
+        });
+    }
+    showSpin('spin1')
     // Khởi tạo với màu đỏ và ảnh đầu tiên
-    updateImages(color_default, currentImageIndex);
+    updateImages(color_default);
 
     const videoframe = document.getElementById("introduce-product");
     const videoMain = document.getElementById("video-main");
@@ -62,12 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoNext = document.getElementById("video-next");
     const dots = document.querySelectorAll(".dot");
     const playPauseButton = document.getElementById("playPauseButton");
+    var label = document.getElementById("textPopup");
     
     let videos = [
-        { src: "video/ren1.mp4", dot: dots[0] },
-        { src: "video/ren2.mp4", dot: dots[1] },
-        { src: "video/ren3.mp4", dot: dots[2] },
-        { src: "video/ren4.mp4", dot: dots[3] }
+        { src: "https://zerokhdt.sirv.com/ren1.mp4", dot: dots[0] },
+        { src: "https://zerokhdt.sirv.com/ren2.mp4", dot: dots[1] },
+        { src: "https://zerokhdt.sirv.com/ren3.mp4", dot: dots[2] },
+        { src: "https://zerokhdt.sirv.com/ren4.mp4", dot: dots[3] }
     ];
     
     let currentIndex = 0;
@@ -106,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     videoMain.addEventListener("ended", function() {
+        label.innerText = color_default;
         if (currentIndex < videos.length - 1) {
             currentIndex++;
             updateVideos();
@@ -179,41 +157,89 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const carousel = document.querySelector('.carousel');
+    // const carousel = document.getElementById('carousel');
+    // const slides = document.querySelectorAll('.carousel-slide');
+    // // const prevBtn = document.querySelector('.prev-btn');
+    // // const nextBtn = document.querySelector('.next-btn');
+
+    // slides.forEach((slide, index) => {
+    //     slide.addEventListener('mouseover', function() {             
+    //         updatecarousel(slide.id);
+    //     });
+    // });
+
+    // slides.forEach((slide, index) => {
+    //     slide.addEventListener('mouseout', function() {             
+    //         slides.style.flex = '0 0 12.5%';
+    //     });
+    // });
+
+    // function updatecarousel(sileid) {
+    //     slides.forEach((slideimg, i) => {                      
+    //         if (slideimg.id === sileid) {
+    //             slideimg.style.width = 50/100*(window.innerWidth)+ "px";
+    //         } else {
+    //             slideimg.style.width = 50/100*(window.innerWidth)/7 + "px";
+    //         }
+    //     });
+    // }
+
+    // let currentIndexImage = 0;
+    // const totalSlides = slides.length;
+
+    // function updateCarousel() {
+    //     const slideWidth = slides[0].clientWidth;
+    //     carousel.style.transform = `translateX(-${currentIndexImage * slideWidth}px)`;
+    // }
+
+    // nextBtn.addEventListener('click', function() {
+    //     if (currentIndexImage < totalSlides - 1) {
+    //         currentIndexImage++;
+    //     } else {
+    //         currentIndexImage = 0;
+    //     }
+    //     updateCarousel();
+    // });
+
+    // prevBtn.addEventListener('click', function() {
+    //     if (currentIndexImage > 0) {
+    //         currentIndexImage--;
+    //     } else {
+    //         currentIndexImage = totalSlides - 1;
+    //     }
+    //     updateCarousel();
+    // });
+
+    // window.addEventListener('resize', updateCarousel);
+
+    // Get all the carousel slides
     const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
 
-    let currentIndexImage = 0;
-    const totalSlides = slides.length;
+    // Add event listeners for hover events
+    slides.forEach((slide) => {
+        slide.addEventListener('mouseover', () => {
+            // When the mouse is over a slide, expand it
+            slide.style.flex = '0 0 50%';
+            slide.style.zIndex = '10'; // Bring the hovered slide on top
 
-    function updateCarousel() {
-        const slideWidth = slides[0].clientWidth;
-        carousel.style.transform = `translateX(-${currentIndexImage * slideWidth}px)`;
-    }
+            // Shrink all the other slides
+            slides.forEach((otherSlide) => {
+                if (otherSlide !== slide) {
+                    otherSlide.style.flex = '0 0 calc((100% - 50%) / 7)';
+                }
+            });
+        });
 
-    nextBtn.addEventListener('click', function() {
-        if (currentIndexImage < totalSlides - 1) {
-            currentIndexImage++;
-        } else {
-            currentIndexImage = 0;
-        }
-        updateCarousel();
+        slide.addEventListener('mouseout', () => {
+            // Reset all slides to their original size when the mouse leaves
+            slides.forEach((otherSlide) => {
+                otherSlide.style.flex = '0 0 12.5%';
+                otherSlide.style.zIndex = '1'; // Reset z-index
+            });
+        });
     });
 
-    prevBtn.addEventListener('click', function() {
-        if (currentIndexImage > 0) {
-            currentIndexImage--;
-        } else {
-            currentIndexImage = totalSlides - 1;
-        }
-        updateCarousel();
-    });
-
-    window.addEventListener('resize', updateCarousel);
 });
-
-var label = document.getElementById("textPopup");
 
 function openTextPopup() {
     var popup = document.getElementById("textPopup");
