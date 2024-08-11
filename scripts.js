@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const circles = document.querySelectorAll('.circle');
     const img1 = document.getElementById('img1');
     const img2 = document.getElementById('img2');
+    const color3d = document.getElementById('color3d');
     const imageContainer = document.getElementById('carousel');
     const totalImages = 119; // Tổng số ảnh cho mỗi màu
     let currentImageIndex = 1;
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let color_default = 'ABSOLUTE_BLACK';
 
     function updateImages(color, index) {
+        color3d.innerHTML = color;
         img1.src = `COLORWAY_RENDER/ADV_BACKPACK_${color}_${index}.png`;
         img2.src = `COLORWAY_RENDER/ADV_BACKPACK_${color}_${((index % totalImages) + 1)}.png`; // Ảnh tiếp theo
     }
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Thay đổi ảnh khi chọn màu từ dropdown
     circles.forEach((circle, index) => {
-        circle.addEventListener('click', function() {
+        circle.addEventListener('click', function() {             
             const color = this.getAttribute('data-value');
             color_default = color;
             updateImages(color, currentImageIndex); // Gọi hàm updateImages với màu và chỉ số là 1
@@ -210,3 +212,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', updateCarousel);
 });
+
+var label = document.getElementById("textPopup");
+
+function openTextPopup() {
+    var popup = document.getElementById("textPopup");
+    popup.style.display = "block";
+}
+
+function closeTextPopup() {
+    var popup = document.getElementById("textPopup");
+    popup.style.display = "none";
+}

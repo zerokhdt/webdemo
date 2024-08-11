@@ -6,6 +6,7 @@
     <title>3D Image Carousel</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js"></script>
+    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
 </head>
 <body>
     <div id="introduce">
@@ -15,14 +16,18 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-    </div>
+    </div> 
     <div id="introduce-product" >
+        <div id="text">
+            <label id="textPopup" class="text-popup"></label>
+        </div>
         <div class="video-carousel">
             <div class="video-container-intro">
                 <div class="video-side left">
                     <video id="video-prev" src="video/ren1.mp4" type="video/mp4" muted></video>
                 </div>
-                <div class="video-main">
+                <div class="video-main" onmouseover="openTextPopup()" onmouseout="closeTextPopup()">
+                                      
                     <video id="video-main" src="video/ren2.mp4" type="video/mp4" autoplay muted></video>
                 </div>
                 <div class="video-side right">
@@ -40,6 +45,7 @@
         <button id="playPauseButton">Pause</button>
     </div>
     <div id="ground3d">
+        <h1 id="color3d"></h1>
         <div id="carousel">
             <img id="img1" src="" alt="Image 1" class="active">
             <img id="img2" src="" alt="Image 2">
@@ -87,5 +93,6 @@
             <img id="img4" src="" alt="Image 4">
         </div>
     </div>
+    <div class="Sirv" data-src="https://urrippur.sirv.com/Spins/ADV/ADV.spin"></div>
 </body>
 </html>
